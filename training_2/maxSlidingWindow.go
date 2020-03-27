@@ -20,7 +20,7 @@
 注意：
 
 你可以假设 k 总是有效的，1 ≤ k ≤ 输入数组的大小，且输入数组不为空。
- */
+*/
 
 package training_2
 
@@ -59,24 +59,24 @@ func maxSlidingWindow(nums []int, k int) []int {
 	result := []int{}
 	result = append(result, maxnum)
 
-	for i:= k; i < len(nums); i++  {
-		val := cal(&quene, nums[i], &maxnum)
+	for i := k; i < len(nums); i++ {
+		val := cal(quene, nums[i], &maxnum)
 		result = append(result, val)
 	}
 
 	return result
 }
 
-func cal(quene *[]int, value int, maxnum *int) int {
-	out := (*quene)[0]
-	*quene =(*quene)[1:]
-	*quene = append(*quene, value)
+func cal(quene []int, value int, maxnum *int) int {
+	out := quene[0]
+	quene = quene[1:]
+	quene = append(quene, value)
 
 	if value > *maxnum {
 		*maxnum = value
 	} else {
 		if out == *maxnum {
-			*maxnum = max(*quene)
+			*maxnum = max(quene)
 		}
 	}
 
