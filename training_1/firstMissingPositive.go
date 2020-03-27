@@ -25,14 +25,14 @@ func firstMissingPositive(nums []int) int {
 
 	for i < numsLen {
 		if nums[i] > 0 && (nums[i] <= numsLen) && (nums[i]-1 != i) && (nums[nums[i]-1] != nums[i]) {
-			swap(&nums, nums[i]-1, i)
+			swap(nums, nums[i]-1, i)
 		} else {
 			i++
 		}
 	}
 
-	for key, v := range nums{
-		if (key+1) == v {
+	for key, v := range nums {
+		if (key + 1) == v {
 			continue
 		} else {
 			result = key + 1
@@ -43,12 +43,11 @@ func firstMissingPositive(nums []int) int {
 	return result
 }
 
-func swap(data *[]int, i int, j int) {
-	tmp := (*data)[i]
-	(*data)[i] = (*data)[j]
-	(*data)[j] = tmp
+func swap(data []int, i int, j int) {
+	tmp := data[i]
+	data[i] = data[j]
+	data[j] = tmp
 }
-
 
 /************** 测试数据 *********************
 
